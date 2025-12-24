@@ -21,6 +21,9 @@
                         <a class="nav-link active fw-semibold" aria-current="page" href="index.php?p=home">Home</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link fw-semibold" href="index.php?p=program_studi">Program Studi</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link fw-semibold" href="index.php?p=mahasiswa">Data Mahasiswa</a>
                     </li>
                 </ul>
@@ -32,9 +35,12 @@
         <?php 
             $page = isset($_GET['p']) ? $_GET['p'] : 'home';
             if($page == 'home') include('home.php');
-            if($page == 'mahasiswa') include('list.php');
-            if($page == 'create') include('create.php');
-            if($page == 'edit') include('edit.php');
+            if($page == 'mahasiswa') include('Mahasiswa/list.php');
+            if($page == 'create') include('Mahasiswa/create.php');
+            if($page == 'edit') include('Mahasiswa/edit.php');
+            if($page == 'program_studi') include('Program-Studi/list.php');
+            if($page == 'tambah') include('Program-Studi/create.php');
+            if($page == 'ubah') include('Program-Studi/edit.php');
         ?>
     </div>
     <footer class="bg-dark text-white mt-5">

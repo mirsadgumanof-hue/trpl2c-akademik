@@ -1,5 +1,6 @@
 <?php
-include("koneksi.php");
+include __DIR__ . "/../koneksi.php";
+
 
 // Jika tidak ada ID → kembali ke list
 if (!isset($_GET['id']) || empty($_GET['id'])) {
@@ -32,7 +33,7 @@ if (!$data) {
 
     <div class="card-body">
 
-        <form action="proses.php" method="POST">
+        <form action="Mahasiswa/proses.php" method="POST">
 
             <!-- kirim ID ke gbproses -->
             <input type="hidden" name="id" value="<?= $data['id'] ?>">
@@ -59,6 +60,18 @@ if (!$data) {
                 <label class="form-label">Alamat</label>
                 <textarea class="form-control" name="alamat" rows="4" required><?= htmlspecialchars($data['alamat']); ?></textarea>
             </div>
+
+            <select class="mb-3 form-select" name="program_studi_id" required>
+                <option value="">--Pilih Program Studi--</option>
+                <?php
+                
+                $prodi = $koneksi->query("SELECT id, nama_prodi FROM program_studi");
+                while ($row = $prodi->fetch_assoc()):
+                    $selected = ($data['program_studi_id'] == $row['id']) ? 'selected' : '';
+                ?>
+                    <option value="<?= $row['id'] ?>" <?= $selected ?>><?= $row['nama_prodi'] ?></option>
+                <?php endwhile; ?>
+            </select>
 
             <button type="submit" name="update" class="btn btn-primary">Update</button>
             <a href="index.php?p=mahasiswa" class="btn btn-secondary">Batal</a>
