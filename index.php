@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    if (!isset($_SESSION['login'])) {
+        header("Location: login.php");
+        exit;
+    }
+?>
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -25,6 +34,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fw-semibold" href="index.php?p=mahasiswa">Data Mahasiswa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold" href="logout.php">Logout</a>
                     </li>
                 </ul>
             </div>
