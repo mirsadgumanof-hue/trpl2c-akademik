@@ -1,4 +1,6 @@
-<h3 style="clear: both; text-align : Center" class="mt-5 mb-3">Selamat Datang di Jurusan Teknologi Informasi</h3>
+<h3 class="text-center mt-3 mb-5">
+    Selamat Datang <strong><?= $_SESSION['nama_lengkap'] ?></strong> di Jurusan Teknologi Informasi Politeknik Negeri Padang
+</h3>
 <!-- Card Start -->
 <div class="container">
     <div class="row g-3 text-center">

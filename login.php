@@ -45,6 +45,13 @@
       <div class="card-body p-4">
 
         <h4 class="text-center mb-4">Login</h4>
+        <?php
+        if (isset($_GET['success'])) {
+            echo '<div class="alert alert-success text-center">
+                    Registrasi berhasil, silakan login.
+                  </div>';
+        }
+        ?>
 
         <form method="POST">
           <div class="mb-3">
@@ -68,6 +75,12 @@
           </button>
         </form>
 
+          <div class="text-center mt-3">
+            <span>Belum punya akun?</span>
+            <a href="register.php" class="fw-semibold text-decoration-none">
+              Daftar di sini
+            </a>
+          </div>
 
       </div>
     </div>
