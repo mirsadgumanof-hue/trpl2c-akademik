@@ -36,7 +36,13 @@
                         <a class="nav-link fw-semibold" href="index.php?p=mahasiswa">Data Mahasiswa</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fw-semibold btn btn-danger text-white active" href="logout.php">Logout</a>
+                        <a class="nav-link fw-semibold" href="index.php?p=profil">Profil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold btn btn-danger text-white active" href="#" onclick="confirmLogout()">
+                            Logout
+                        </a>
+
                     </li>
                 </ul>
             </div>
@@ -53,6 +59,7 @@
             if($page == 'program_studi') include('Program-Studi/list.php');
             if($page == 'tambah') include('Program-Studi/create.php');
             if($page == 'ubah') include('Program-Studi/edit.php');
+            if($page == 'profil') include('profil.php');
         ?>
     </div>
     <footer class="bg-dark text-white mt-5">
@@ -127,6 +134,14 @@
             </div>
         </div>
     </footer>
+    <script>
+        function confirmLogout() {
+            if (confirm("Apakah Anda yakin ingin logout?")) {
+                window.location.href = "logout.php";
+            }
+        }
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </body>
 </html>

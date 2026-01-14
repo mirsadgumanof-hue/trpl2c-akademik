@@ -18,6 +18,7 @@ if (isset($_POST['email'])) {
         $data = $result->fetch_assoc();
 
         $_SESSION['login'] = true;
+        $_SESSION['id_user'] = $data['id']; 
         $_SESSION['email'] = $data['email'];
         $_SESSION['nama_lengkap'] = $data['nama_lengkap'];
 
