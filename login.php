@@ -1,33 +1,34 @@
 <?php
-  ob_start();
-  session_start();
-  require 'koneksi.php';
+ob_start();
+session_start();
+require 'koneksi.php';
 
-  if (isset($_POST['email'])) {
+if (isset($_POST['email'])) {
 
-      $email = $_POST['email'];
-      $password = $_POST['password'];
+    $email = $_POST['email'];
+    $password = md5($_POST['password']); // 🔥 HASH MD5
 
-      $stmt = $koneksi->prepare("SELECT * FROM pengguna WHERE email = ? AND password = ?");
-      $stmt->bind_param("ss", $email, $password);
-      $stmt->execute();
+    $stmt = $koneksi->prepare("SELECT * FROM pengguna WHERE email = ? AND password = ?");
+    $stmt->bind_param("ss", $email, $password);
+    $stmt->execute();
 
-      $result = $stmt->get_result();
+    $result = $stmt->get_result();
 
-      if ($result->num_rows == 1) {
-          $data = $result->fetch_assoc();
+    if ($result->num_rows == 1) {
+        $data = $result->fetch_assoc();
 
-          $_SESSION['login'] = true;
-          $_SESSION['email'] = $data['email'];
-          $_SESSION['nama_lengkap'] = $data['nama_lengkap'];
+        $_SESSION['login'] = true;
+        $_SESSION['email'] = $data['email'];
+        $_SESSION['nama_lengkap'] = $data['nama_lengkap'];
 
-          header("Location: index.php");
-          exit;
-      } else {
-          $error = "Email atau password salah.";
-      }
-  }
+        header("Location: index.php");
+        exit;
+    } else {
+        $error = "Email atau password salah.";
+    }
+}
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>

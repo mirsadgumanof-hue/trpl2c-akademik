@@ -6,7 +6,7 @@ if (isset($_POST['nama_lengkap'])) {
 
     $nama = $_POST['nama_lengkap'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = md5($_POST['password']); // 🔥 HASH MD5
 
     // cek email sudah terdaftar
     $cek = $koneksi->prepare("SELECT id FROM pengguna WHERE email = ?");
@@ -29,6 +29,7 @@ if (isset($_POST['nama_lengkap'])) {
     }
 }
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
